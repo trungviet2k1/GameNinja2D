@@ -28,7 +28,8 @@ public class Kunai : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Character>().OnHit(30f);
+            AudioManager.Instance.HurtSound();
+            collision.GetComponent<Character>().OnHit(20);
             OnDespawn();
         }
     }

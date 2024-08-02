@@ -35,7 +35,8 @@ public class Character : MonoBehaviour
     protected virtual void OnDeath()
     {
         ChangeAnimation("Die");
-        Invoke(nameof(OnDespawn), 2f);
+        AudioManager.Instance.DeathSound();
+        Invoke(nameof(OnDespawn), 1f);
     }
 
     protected void ChangeAnimation(string animation)

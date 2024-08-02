@@ -123,6 +123,7 @@ public class Player : Character
         {
             isJumping = true;
             ChangeAnimation("Jump");
+            AudioManager.Instance.JumpSound();
             rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse); 
         }
     }
@@ -138,6 +139,7 @@ public class Player : Character
         {
             isAttacking = true;
             ChangeAnimation("Attack");
+            AudioManager.Instance.SwordAttackSound();
             Invoke(nameof(ResetAttack), 0.5f);
             ActiveAttack();
             Invoke(nameof(DeActiveAttack), 0.5f); 
@@ -150,6 +152,7 @@ public class Player : Character
         {
             isAttacking = true;
             ChangeAnimation("Throw");
+            AudioManager.Instance.KunaiThrowSound();
             Invoke(nameof(ResetAttack), 0.5f);
             StartCoroutine(ThrowKunai()); 
         }
@@ -188,6 +191,7 @@ public class Player : Character
         if (collision.CompareTag("Coin"))
         {
             coin++;
+            AudioManager.Instance.PickUpSound();
             PlayerPrefs.SetInt("Coin", coin);
             CoinManager.Instance.SetCoin(coin);
             Destroy(collision.gameObject);
@@ -198,6 +202,7 @@ public class Player : Character
             if (!isDeath)
             {
                 ChangeAnimation("Die");
+                AudioManager.Instance.DeathSound();
                 StartCoroutine(Respawn());
             }
         }

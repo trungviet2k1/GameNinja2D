@@ -83,6 +83,7 @@ public class Enemy : Character
     public void Attack()
     {
         ChangeAnimation("Attack");
+        AudioManager.Instance.SwordAttackSound();
         ActiveAttack();
         Invoke(nameof(DeActiveAttack), 0.5f);
     }
